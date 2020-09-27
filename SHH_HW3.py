@@ -20,6 +20,10 @@ from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
+import sys 
+
+stdoutOrigin = sys.stdout 
+sys.stdout = open("log.txt", "w")
 
 data = pd.read_csv("credit_card_train.csv")
 
@@ -615,3 +619,6 @@ def NB(train_val_X, train_val_y):
 print("\\\\\\")
 print("NB")
 NB(X, y)
+
+sys.stdout.close()
+sys.stdout = stdoutOrigin
